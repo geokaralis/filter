@@ -32,7 +32,15 @@ void PromptUser(int argc, std::string input) {
 int main(int argc, char** argv) {
 
 	imaging::Image img;
-	if (img.load("Image01.ppm", "ppm")) std::cout << img.getWidth();
+	if (img.load("Image01.ppm", "ppm"))
+	{
+		float *array = imaging::ReadPPM("Image01.ppm", img.getWidth, img.getHeight);
+
+	};
+
+	std::cout << "----------------\n";
+	imaging::Color c = img.getPixel(0,1);
+	std::cout << c.r << " " << c.g << " " << c.b;
 
 	/*std::string input;
 	PromptUser(argc, input);*/
