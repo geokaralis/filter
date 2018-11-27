@@ -68,7 +68,10 @@ bool imaging::Image::load(const std::string & filename, const std::string & form
 			int width, height, rgb;
 
 			is.open(filename, std::ios::binary);
-			if (!is.is_open()) throw("Cannot open file");
+			if (!is.is_open()) {
+				std::cout << "Cannot open file" << std::endl;
+				return false;
+			}
 			is >> header >> width >> height >> rgb;
 
 			this->width = width;
