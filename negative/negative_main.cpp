@@ -34,8 +34,8 @@ int main(int argc, char** argv) {
 	imaging::Image img;
 	if (img.load("Image01.ppm", "ppm")) std::cout << img.getWidth();
 
-	std::string input;
-	PromptUser(argc, input);
+	/*std::string input;
+	PromptUser(argc, input);*/
 
 	std::cin.get();
 	return 0;
