@@ -1,7 +1,7 @@
 #include "image.h"
 #include <sstream>
-#include<fstream>
-#include<iostream>
+#include <fstream>
+#include <iostream>
 
 using namespace imaging;
 
@@ -58,7 +58,7 @@ bool imaging::Image::load(const std::string & filename, const std::string & form
 	std::string extension, token;
 
 	while (std::getline(iss, extension, '.'))
-		//if (!token.empty()) extension = token;
+		if (!token.empty()) extension = token;
 
 		if (extension.compare(format) == 0)
 		{
