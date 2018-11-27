@@ -31,8 +31,8 @@ void PromptUser(int argc, std::string input) {
 
 int main(int argc, char** argv) {
 
-	/*imaging::Image img;
-	if (img.load("Image01.ppm", "ppm")) std::cout << img.getWidth();*/
+	imaging::Image img;
+	if (img.load("Image01.ppm", "ppm")) std::cout << img.getWidth();
 
 	std::string input;
 	PromptUser(argc, input);

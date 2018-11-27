@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="neg.cpp" />
+    <ClCompile Include="negative_main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ppm\ppm.vcxproj">
