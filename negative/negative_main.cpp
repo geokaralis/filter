@@ -1,6 +1,7 @@
 // The application main
 
 #include <iostream>
+#include <fstream>
 #include <string>
 
 #include "ppm.h"
@@ -32,19 +33,11 @@ void PromptUser(int argc, std::string input) {
 int main(int argc, char** argv) {
 
 	imaging::Image img;
-	int w = img.getWidth();
-	int h = img.getHeight();
-
-	float *array = imaging::ReadPPM("Image01.ppm", &w, &h);
-
-	for (int i = 0; i < 10; i++) {
-		std::cout << "from negative " << array[i] << std::endl;
-	}
-	/*if (img.load("Image01.ppm", "ppm"))
+	if (img.load("Image01.ppm", "ppm"))
 	{
-		float *array = imaging::ReadPPM("Image01.ppm", &w, &h); 
+		float *array = imaging::ReadPPM("Image01.ppm", img.getWidth, img.getHeight);
 
-	};*/
+	};
 
 	/*std::cout << "----------------\n";
 	imaging::Color c = img.getPixel(0,1);
