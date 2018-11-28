@@ -2,10 +2,6 @@
 #include <sstream>
 #include <fstream>
 #include <iostream>
-#include <vector>
-
-#define BUFFERSIZE width*height
-#define DEBUG0 false
 
 using namespace imaging;
 
@@ -40,16 +36,17 @@ void imaging::Image::setPixel(unsigned int x, unsigned int y, Color & value)
 
 void imaging::Image::setData(const Color *& data_ptr)
 {
-	buffer = new Color[BUFFERSIZE];
-	memcpy(buffer, data_ptr, BUFFERSIZE);
+	buffer = new Color[width*height];
+	memcpy(buffer, data_ptr, width*height);
 }
 
 imaging::Image::Image() : width(0), height(0), buffer(nullptr)
 {
 }
 
-imaging::Image::Image(unsigned int width, unsigned int height) : width(width), height(height), buffer(nullptr)
+imaging::Image::Image(unsigned int width, unsigned int height) : width(width), height(height)
 {
+	buffer = new Color[width*height];
 }
 
 imaging::Image::Image(unsigned int width, unsigned int height, const Color * data_ptr) : width(width), height(height)
@@ -57,8 +54,10 @@ imaging::Image::Image(unsigned int width, unsigned int height, const Color * dat
 	setData(data_ptr);
 }
 
-imaging::Image::Image(const Image & src) : width(src.width), height(src.height), buffer(src.buffer)
+imaging::Image::Image(const Image & src) : width(src.width), height(src.height)
 {
+	buffer = new Color[src.width*src.height];
+	memcpy(buffer, src.buffer, src.width*src.height);
 }
 
 imaging::Image::~Image()
@@ -91,69 +90,13 @@ bool imaging::Image::load(const std::string & filename, const std::string & form
 
 	if (compare)
 	{
-		try
+		// If the current Image object is initialized.
+		if (this != nullptr)
 		{
-			// If the current Image object is initialized.
-			if (this != nullptr)
-			{
-				std::cout << "BHKE";
-				this->~Image();
-			}
-
-			std::ifstream ifs;
-			std::string header;
-			unsigned int width, height, rgb;
-
-			// Open file in binary.
-			ifs.open(filename, std::ios::binary);
-
-			if (!ifs.is_open()) throw("Cannot open file");
-			ifs >> header >> width >> height >> rgb;
-
-			this->width = width;
-			this->height = height;
-
-			if (header.compare("P6") != 0) throw("Cannot read file. Must be P6");
-			if (rgb > 255) throw("Cannot read file. Color intensity must be up to 255");
-			
-
-			// Initialize a temporary uchar* buffer to store integers with values [0, 255].
-			int tmpbufferSize = BUFFERSIZE * 3;
-			unsigned char *tmp = new unsigned char[tmpbufferSize];
-
-			// Initialize the Color buffer.
-			buffer = new Color[BUFFERSIZE];
-
-			// Store the file data to temporary buffer.
-			ifs.read((char*)tmp, tmpbufferSize);
-
-			// Pass the data from the temporary buffer to Color Buffer. ()
-			for (int i = 0, j = 0; i < BUFFERSIZE && j < tmpbufferSize; i++, j+=3)
-			{
-				buffer[i][0] = (float)tmp[j];
-				buffer[i][1] = (float)tmp[j+1];
-				buffer[i][2] = (float)tmp[j+2];
-			}
-
-			delete[] tmp;
-
-			/* DEBUGGING CODE */
-			if (DEBUG0)
-			{
-				for (int i = 0; i < 10; i++)
-				{
-					std::cout << buffer[i][0] << " " << buffer[i][1] << " " << buffer[i][2] << std::endl;
-				}
-			}
-
-			ifs.close();
-
-			return true;
+			this->~Image();
 		}
-		catch (std::exception& e)
-		{
-			std::cout << e.what() << std::endl;
-		}
+
+		return true;
 	}
 	return false;
 }
@@ -180,25 +123,7 @@ bool imaging::Image::save(const std::string & filename, const std::string & form
 		// Checking if the current Image object is initialized.
 		if (this != nullptr)
 		{
-			try
-			{
-				// Setting up the header of PPM file. 
-				std::ofstream ofs(filename, std::ios::binary);
-				ofs << "P6\n";
-				ofs << this->width << "\n";
-				ofs << this->height << "\n";
-				ofs << "255\n";
-
-				// Write buffer data to the given file.
-				ofs.write((char*)buffer, width * height * 3);
-				ofs.close();
-
-				return true;
-			}
-			catch (std::exception& e)
-			{
-				std::cout << e.what() << std::endl;
-			}
+			return true;
 		}
 	}
 	return false;

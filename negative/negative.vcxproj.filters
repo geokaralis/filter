@@ -20,6 +20,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\PPM\Image01.ppm" />
+    <None Include="Image01.ppm" />
   </ItemGroup>
 </Project>

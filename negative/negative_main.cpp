@@ -32,11 +32,38 @@ void PromptUser(int argc, std::string input) {
 
 int main(int argc, char** argv) {
 
-	imaging::Image img;
-	if (img.load("Image01.ppm", "ppm"))
+	imaging::Image *image = new imaging::Image();
+	if (true /*img.load("Image01.ppm", "ppm")*/)
 	{
-		float *array = imaging::ReadPPM("Image01.ppm", img.getWidth, img.getHeight);
+		// img.getWidth() and img.getHeight() are ZERO.
+		int w = image->getWidth();
+		int h = image->getHeight();
 
+		float *array = imaging::ReadPPM("Image01.ppm", &w, &h);
+
+		/*image = new imaging::Image(w, h);
+
+		imaging::Color *buffer = image->getRawDataPtr();
+
+		for (int i = 0, j = 0; i < w*h && j < w*h * 3; i++, j += 3)
+		{
+			buffer[i][0] = array[j];
+			buffer[i][1] = array[j + 1];
+			buffer[i][2] = array[j + 2];
+		}
+
+		imaging::Color *white = new imaging::Color(255,255,255);
+
+		for (int i = 0; i < w*h; i++)
+		{
+			buffer[i] = *white - buffer[i];
+		}
+
+		array = (float*)buffer;*/
+
+		imaging::WritePPM(array, w, h, "Image01_neg.ppm");
+		//image->save("Image01_neg.ppm", "ppm");
+		std::cout << "\n\ndone";
 	};
 
 	/*std::cout << "----------------\n";
