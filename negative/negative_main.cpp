@@ -1,6 +1,7 @@
 // The application main
 
 #include <iostream>
+#include <fstream>
 #include <string>
 
 #include "ppm.h"
@@ -31,16 +32,26 @@ void PromptUser(int argc, std::string input) {
 
 int main(int argc, char** argv) {
 
-	imaging::Image img;
-	if (img.load("Image01.ppm", "ppm"))
+	std::ifstream ifs;
+
+	/*!
+	 * @TODO: Use argv instead of filename;
+	 */
+	std::string filename = "Image01.ppm";
+	/*ifs.open(filename, std::ios::binary);*/
+
+	imaging::Image img; // = new imaging::Image(45, 50, new imaging::Color(50, 60, 50));
+
+	if (img.load(filename, "ppm"))
 	{
-		float *array = imaging::ReadPPM("Image01.ppm", img.getWidth, img.getHeight);
-
+		//float *array = imaging::ReadPPM("Image01.ppm", img.getWidth, img.getHeight);
+		std::cout << img.getPixel(0, 5).r;
 	};
+	
 
-	std::cout << "----------------\n";
+	/*std::cout << "----------------\n";
 	imaging::Color c = img.getPixel(0,1);
-	std::cout << c.r << " " << c.g << " " << c.b;
+	std::cout << c.r << " " << c.g << " " << c.b;*/
 
 	/*std::string input;
 	PromptUser(argc, input);*/

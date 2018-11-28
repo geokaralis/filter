@@ -5,6 +5,7 @@
 #include <vector>
 
 #define BUFFERSIZE width*height
+#define DEBUG0 false
 
 using namespace imaging;
 
@@ -39,6 +40,7 @@ void imaging::Image::setPixel(unsigned int x, unsigned int y, Color & value)
 
 void imaging::Image::setData(const Color *& data_ptr)
 {
+	buffer = new Color[BUFFERSIZE];
 	memcpy(buffer, data_ptr, BUFFERSIZE);
 }
 
@@ -61,7 +63,7 @@ imaging::Image::Image(const Image & src) : width(src.width), height(src.height),
 
 imaging::Image::~Image()
 {
-	delete buffer;
+	delete[] buffer;
 }
 
 Image & imaging::Image::operator=(const Image & right)
@@ -91,12 +93,19 @@ bool imaging::Image::load(const std::string & filename, const std::string & form
 	{
 		try
 		{
+			// If the current Image object is initialized.
+			if (this != nullptr)
+			{
+				std::cout << "BHKE";
+				this->~Image();
+			}
+
 			std::ifstream ifs;
 			std::string header;
 			unsigned int width, height, rgb;
 
+			// Open file in binary.
 			ifs.open(filename, std::ios::binary);
-
 
 			if (!ifs.is_open()) throw("Cannot open file");
 			ifs >> header >> width >> height >> rgb;
@@ -106,15 +115,19 @@ bool imaging::Image::load(const std::string & filename, const std::string & form
 
 			if (header.compare("P6") != 0) throw("Cannot read file. Must be P6");
 			if (rgb > 255) throw("Cannot read file. Color intensity must be up to 255");
+			
 
-
+			// Initialize a temporary uchar* buffer to store integers with values [0, 255].
 			int tmpbufferSize = BUFFERSIZE * 3;
 			unsigned char *tmp = new unsigned char[tmpbufferSize];
 
+			// Initialize the Color buffer.
 			buffer = new Color[BUFFERSIZE];
 
-			ifs.read((char*)tmp, BUFFERSIZE);
+			// Store the file data to temporary buffer.
+			ifs.read((char*)tmp, tmpbufferSize);
 
+			// Pass the data from the temporary buffer to Color Buffer. ()
 			for (int i = 0, j = 0; i < BUFFERSIZE && j < tmpbufferSize; i++, j+=3)
 			{
 				buffer[i][0] = (float)tmp[j];
@@ -122,20 +135,16 @@ bool imaging::Image::load(const std::string & filename, const std::string & form
 				buffer[i][2] = (float)tmp[j+2];
 			}
 
-			for (int i = 0; i < 5; i++)
+			delete[] tmp;
+
+			/* DEBUGGING CODE */
+			if (DEBUG0)
 			{
-				std::cout << buffer[i][0] << " " << buffer[i][1] << " " << buffer[i][2] << std::endl;
+				for (int i = 0; i < 10; i++)
+				{
+					std::cout << buffer[i][0] << " " << buffer[i][1] << " " << buffer[i][2] << std::endl;
+				}
 			}
-
-			/*const int bufferSize = width * height;
-			buffer = new Color[bufferSize];
-
-			std::cout << sizeof(buffer[0]);
-			std::cout << sizeof(char);
-
-			ifs.read((char *)buffer, bufferSize); rgb rgb rgb rgb rgb rgb rgb rgb 
-
-			buffer[0]*/
 
 			ifs.close();
 
