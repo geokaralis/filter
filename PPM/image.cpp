@@ -1,17 +1,16 @@
 #include "image.h"
+
 #include <sstream>
 #include <fstream>
 #include <iostream>
 
 using namespace imaging;
 
-Color * imaging::Image::getRawDataPtr()
-{
+Color * Image::getRawDataPtr() {
 	return buffer;
 }
 
-Color imaging::Image::getPixel(unsigned int x, unsigned int y) const
-{
+Color Image::getPixel(unsigned int x, unsigned int y) const {
 	Color c = Color();
 	// Checking the bounds of Image.
 	if (x < width && y < height && x >= 0 && y >= 0)
@@ -23,8 +22,7 @@ Color imaging::Image::getPixel(unsigned int x, unsigned int y) const
 	return c;
 }
 
-void imaging::Image::setPixel(unsigned int x, unsigned int y, Color & value)
-{
+void Image::setPixel(unsigned int x, unsigned int y, Color & value) {
 	// Checking the bounds of Image.
 	if (x < width && y < height && x >= 0 && y >= 0)
 	{
@@ -34,45 +32,49 @@ void imaging::Image::setPixel(unsigned int x, unsigned int y, Color & value)
 	}
 }
 
-void imaging::Image::setData(const Color *& data_ptr)
-{
+void Image::setData(const Color *& data_ptr) {
 	buffer = new Color[width*height];
 	memcpy(buffer, data_ptr, width*height);
 }
 
-imaging::Image::Image() : width(0), height(0), buffer(nullptr)
-{
+Image::Image() {
+	this->width = 0;
+	this->height = 0;
+	this->buffer = nullptr;
 }
 
-imaging::Image::Image(unsigned int width, unsigned int height) : width(width), height(height)
-{
+Image::Image(unsigned int width, unsigned int height) {
+	this->width = width;
+	this->height = height;
+
 	buffer = new Color[width*height];
 }
 
-imaging::Image::Image(unsigned int width, unsigned int height, const Color * data_ptr) : width(width), height(height)
-{
+Image::Image(unsigned int width, unsigned int height, const Color * data_ptr) {
+	this->width = width;
+	this->height = height;
+
 	setData(data_ptr);
 }
 
-imaging::Image::Image(const Image & src) : width(src.width), height(src.height)
-{
+Image::Image(const Image & src) {
+	this->width = src.width;
+	this->height = src.height;
+
 	buffer = new Color[src.width*src.height];
 	memcpy(buffer, src.buffer, src.width*src.height);
 }
 
-imaging::Image::~Image()
-{
+Image::~Image() {
 	delete[] buffer;
 }
 
-Image & imaging::Image::operator=(const Image & right)
-{
+Image & Image::operator=(const Image & right) {
 	Image *img = new Image(right);
 	return *img;
 }
 
-bool imaging::Image::load(const std::string & filename, const std::string & format)
-{
+bool Image::load(const std::string & filename, const std::string & format) {
 	std::istringstream iss(filename);
 	std::string extension, token;
 
@@ -101,8 +103,7 @@ bool imaging::Image::load(const std::string & filename, const std::string & form
 	return false;
 }
 
-bool imaging::Image::save(const std::string & filename, const std::string & format)
-{
+bool Image::save(const std::string & filename, const std::string & format) {
 	std::istringstream iss(filename);
 	std::string extension, token;
 

@@ -36,12 +36,12 @@ int main(int argc, char** argv) {
 	if (true /*img.load("Image01.ppm", "ppm")*/)
 	{
 		// img.getWidth() and img.getHeight() are ZERO.
-		int w = image->getWidth();
-		int h = image->getHeight();
+		int w = 0;
+		int h = 0;
 
 		float *array = imaging::ReadPPM("Image01.ppm", &w, &h);
 
-		/*image = new imaging::Image(w, h);
+		image = new imaging::Image(w, h);
 
 		imaging::Color *buffer = image->getRawDataPtr();
 
@@ -52,14 +52,19 @@ int main(int argc, char** argv) {
 			buffer[i][2] = array[j + 2];
 		}
 
-		imaging::Color *white = new imaging::Color(255,255,255);
+		imaging::Color *white = new imaging::Color(1,1,1);
 
 		for (int i = 0; i < w*h; i++)
 		{
 			buffer[i] = *white - buffer[i];
 		}
 
-		array = (float*)buffer;*/
+		array = (float*)buffer;
+
+		LOG("Begin to write negative image");
+
+		/*int width = w;
+		int height = h;*/
 
 		imaging::WritePPM(array, w, h, "Image01_neg.ppm");
 		//image->save("Image01_neg.ppm", "ppm");
