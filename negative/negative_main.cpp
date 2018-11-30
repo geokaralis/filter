@@ -1,83 +1,38 @@
 // The application main
 
-#include <iostream>
-#include <fstream>
-#include <string>
-
-#include "ppm.h"
-#include "image.h"
+#include "negative.h"
 
 #define LOG(x) std::cout << x << std::endl;
 
-bool FilePresent(int argc) {
-	if (argc != 2) {
-		std::cout << "You didn't provide a file" << std::endl;
-		return false;
-	}
-
-	std::cout << "File is good" << std::endl;
-	return true;
-}
-
-void PromptUser(int argc, std::string input) {
-	if (FilePresent(argc)) {
-		LOG("File is present");
-
-		return;
-	}
-
-	std::cout << "Write the file: ";
-	std::cin >> input;
-}
-
 int main(int argc, char** argv) {
 
-	imaging::Image *image = new imaging::Image();
-	if (true /*img.load("Image01.ppm", "ppm")*/)
-	{
+	std::string image_file = "../data/img_01.ppm";
+
+	Image *image = new Image();
+
+	if (image->load(image_file, "ppm")) {
 		// img.getWidth() and img.getHeight() are ZERO.
-		int w = 0;
-		int h = 0;
+		int w = image->getWidth();
+		int h = image->getHeight();
 
-		float *array = imaging::ReadPPM("Image01.ppm", &w, &h);
+		float *data = ReadPPM("../data/img_01.ppm", &w, &h);
 
-		image = new imaging::Image(w, h);
+		image = new Image(w,h);
+		Color *color = image->getRawDataPtr();
 
-		imaging::Color *buffer = image->getRawDataPtr();
+		FillColorFromRawData(color, data, w, h);
+		ApplyNegativeFilter(color, w, h);
 
-		for (int i = 0, j = 0; i < w*h && j < w*h * 3; i++, j += 3)
-		{
-			buffer[i][0] = array[j];
-			buffer[i][1] = array[j + 1];
-			buffer[i][2] = array[j + 2];
+		if (image->save(image_file, "ppm")) {
+			WritePPM((float*)color, w, h, "../data/_neg_img_01.ppm");
 		}
-
-		imaging::Color *white = new imaging::Color(1,1,1);
-
-		for (int i = 0; i < w*h; i++)
-		{
-			buffer[i] = *white - buffer[i];
-		}
-
-		array = (float*)buffer;
-
-		LOG("Begin to write negative image");
-
-		/*int width = w;
-		int height = h;*/
-
-		imaging::WritePPM(array, w, h, "Image01_neg.ppm");
-		//image->save("Image01_neg.ppm", "ppm");
-		std::cout << "\n\ndone";
+		
 	};
-
-	/*std::cout << "----------------\n";
-	imaging::Color c = img.getPixel(0,1);
-	std::cout << c.r << " " << c.g << " " << c.b;*/
 
 	/*std::string input;
 	PromptUser(argc, input);*/
 
+	LOG("Press any button to exit...");
 	std::cin.get();
 	return 0;
 }

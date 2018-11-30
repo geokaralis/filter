@@ -18,8 +18,22 @@
     <ClCompile Include="negative_main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="negative.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cli.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Image01.ppm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="negative.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cli.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

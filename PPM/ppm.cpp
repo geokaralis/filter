@@ -44,10 +44,7 @@ float * imaging::ReadPPM(const char * filename, int * w, int * h) {
 
 	file_stream.read(reinterpret_cast<char *>(buffer), size);
 
-
 	file_stream.close();
-
-	std::cout << "the entire file content is in memory \n";
 
 	for (int i = 0; i < size; i++) {
 		floatArray[i] = (float)buffer[i];
@@ -71,7 +68,6 @@ bool imaging::WritePPM(const float * data, int w, int h, const char * filename)
 
 		// Write buffer data to the given file.
 
-		std::cout << "enter" << std::endl;
 		// PPM file data as a char type
 		/*float * farr = new float[3 * w*h];
 		for (int i = 0; i < 3*w*h; i++)
@@ -93,9 +89,6 @@ bool imaging::WritePPM(const float * data, int w, int h, const char * filename)
 
 		for (int i = 0; i < 3*w*h; i++) {
 			unsigned char c = (unsigned char)(data[i] * 255);
-			if (i < 10) {
-				LOG((int)c);
-			}
 			file_stream.write((char*)&c, sizeof(c));
 		}
 		

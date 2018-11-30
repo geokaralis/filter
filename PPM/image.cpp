@@ -46,21 +46,18 @@ Image::Image() {
 Image::Image(unsigned int width, unsigned int height) {
 	this->width = width;
 	this->height = height;
-
 	buffer = new Color[width*height];
 }
 
 Image::Image(unsigned int width, unsigned int height, const Color * data_ptr) {
 	this->width = width;
 	this->height = height;
-
 	setData(data_ptr);
 }
 
 Image::Image(const Image & src) {
 	this->width = src.width;
 	this->height = src.height;
-
 	buffer = new Color[src.width*src.height];
 	memcpy(buffer, src.buffer, src.width*src.height);
 }
@@ -98,6 +95,7 @@ bool Image::load(const std::string & filename, const std::string & format) {
 			this->~Image();
 		}
 
+		std::cout << "[Image] File was loaded succesfully" << std::endl;
 		return true;
 	}
 	return false;
@@ -124,6 +122,7 @@ bool Image::save(const std::string & filename, const std::string & format) {
 		// Checking if the current Image object is initialized.
 		if (this != nullptr)
 		{
+			std::cout << "[Image] File was saved succesfully" << std::endl;
 			return true;
 		}
 	}
