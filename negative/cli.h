@@ -5,4 +5,4 @@
 
 bool FilePresent(int argc);
 
-void PromptUser(int argc, std::string input);
+char* PromptUser(std::string &input);

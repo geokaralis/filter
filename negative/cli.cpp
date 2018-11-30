@@ -2,21 +2,19 @@
 
 bool FilePresent(int argc) {
 	if (argc != 2) {
-		std::cout << "You didn't provide a file" << std::endl;
 		return false;
 	}
-
-	std::cout << "File is good" << std::endl;
 	return true;
 }
 
-void PromptUser(int argc, std::string input) {
-	if (FilePresent(argc)) {
-		std::cout << "File is present" << std::endl;
-
-		return;
-	}
-
-	std::cout << "Write the file: ";
+char* PromptUser(std::string &input) {
+	char* s0;
+	std::cout << "File name of the image to load: ";
 	std::cin >> input;
+	
+	// Converts: std::string to char*
+	s0 = new char[input.size() + 1];
+	memcpy(s0, input.c_str(), input.size() + 1);
+
+	return s0;
 }
