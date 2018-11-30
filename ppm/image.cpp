@@ -94,8 +94,6 @@ bool Image::load(const std::string & filename, const std::string & format) {
 		{
 			this->~Image();
 		}
-
-		std::cout << "[Image] File was loaded succesfully" << std::endl;
 		return true;
 	}
 	return false;
@@ -122,7 +120,6 @@ bool Image::save(const std::string & filename, const std::string & format) {
 		// Checking if the current Image object is initialized.
 		if (this != nullptr)
 		{
-			std::cout << "[Image] File was saved succesfully" << std::endl;
 			return true;
 		}
 	}

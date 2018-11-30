@@ -6,16 +6,17 @@
 
 int main(int argc, char** argv) {
 
-	std::string image_file = "../data/img_01.ppm";
+	std::string image_file = argv[1];
 
 	Image *image = new Image();
 
 	if (image->load(image_file, "ppm")) {
+
 		// img.getWidth() and img.getHeight() are ZERO.
 		int w = image->getWidth();
 		int h = image->getHeight();
 
-		float *data = ReadPPM("../data/img_01.ppm", &w, &h);
+		float *data = ReadPPM(argv[1], &w, &h);
 
 		image = new Image(w,h);
 		Color *color = image->getRawDataPtr();
@@ -24,15 +25,13 @@ int main(int argc, char** argv) {
 		ApplyNegativeFilter(color, w, h);
 
 		if (image->save(image_file, "ppm")) {
-			WritePPM((float*)color, w, h, "../data/_neg_img_01.ppm");
+			LOG("Image dimensions are: "<< image->getWidth() << " X " << image->getHeight())
+						
+			WritePPM((float*)color, w, h, argv[1]);
 		}
 		
 	};
 
-	/*std::string input;
-	PromptUser(argc, input);*/
-
-	LOG("Press any button to exit...");
 	std::cin.get();
 	return 0;
 }

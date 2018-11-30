@@ -39,9 +39,6 @@ float * imaging::ReadPPM(const char * filename, int * w, int * h) {
 	if (type.compare("P6") != 0) throw("Cannot read file. Must be P6");
 	if (intensity > 255) throw("Cannot read file. Color intensity must be up to 255");
 
-	
-	//file_stream.read(reinterpret_cast<char *>(floatArray), size);
-
 	file_stream.read(reinterpret_cast<char *>(buffer), size);
 
 	file_stream.close();
@@ -59,34 +56,18 @@ bool imaging::WritePPM(const float * data, int w, int h, const char * filename)
 {
 	try
 	{
+		// Converts: Image01.ppm to Image01_neg.ppm
+		std::string leftPart = filename, newFileName;
+		newFileName = leftPart.substr(0, leftPart.find(".")) + "_neg.ppm";
+
 		// Setting up the header of PPM file. 
-		std::ofstream file_stream(filename, std::ios_base::binary);
+		std::ofstream file_stream(newFileName, std::ios_base::binary);
 		file_stream << "P6\n";
 		file_stream << w << "\n";
 		file_stream << h << "\n";
 		file_stream << "255\n";
 
-		// Write buffer data to the given file.
-
-		// PPM file data as a char type
-		/*float * farr = new float[3 * w*h];
-		for (int i = 0; i < 3*w*h; i++)
-		{
-			farr[i] = data[i];
-		}
-
-		unsigned char* ppm_data = new unsigned char[3 * w*h]; 
-
-		for (int i = 0; i < 3 * w*h; i++) {
-			unsigned char c = (unsigned char)(farr[i]);
-			file_stream.write((char*)&c, sizeof(c));
-		}*/
 		
-
-		//ppm_data[0] = (unsigned char)data[0];
-
-		//unsigned char* ppm_data = new unsigned char[3 * w*h];
-
 		for (int i = 0; i < 3*w*h; i++) {
 			unsigned char c = (unsigned char)(data[i] * 255);
 			file_stream.write((char*)&c, sizeof(c));
