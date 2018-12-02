@@ -20,7 +20,18 @@ float * imaging::ReadPPM(const char * filename, int * w, int * h) {
 
 		file_stream.open(filename, std::ios_base::binary);
 
-		if (!file_stream.is_open()) throw "Cannot open file";
+		if (file_stream.fail()) {
+			LOG("The specified file does not exist.");
+			std::cout << "Press any key to close..." << std::endl;
+			std::cin.ignore();
+			std::cin.get();
+			exit(0);
+		}
+
+
+		if (!file_stream.is_open()) {
+			throw "Cannot open file";
+		}
 
 		file_stream >> type
 			>> width

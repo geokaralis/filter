@@ -1,6 +1,9 @@
 #include "negative.h"
 
-Color* FillColorFromRawData(Color* color, float* data, int width, int height) {
+using namespace negative;
+
+Color * negative::FillColorFromRawData(Color * color, float * data, int width, int height)
+{
 	int p = 0; // Holds the position of the current 
 			   // color value within the raw data array.
 
@@ -33,7 +36,8 @@ Color* FillColorFromRawData(Color* color, float* data, int width, int height) {
 	return color;
 }
 
-Color* ApplyNegativeFilter(Color* color, int width, int height) {
+Color * negative::ApplyNegativeFilter(Color * color, int width, int height)
+{
 	Color* white = new Color(1, 1, 1); // (1, 1, 1) is white since each color channel 
 									   // goes from 0.0f (darkness) to 1.0f (full color brightness).
 

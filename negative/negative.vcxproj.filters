@@ -21,7 +21,7 @@
     <ClCompile Include="negative.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cli.cpp">
+    <ClCompile Include="command_line.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,7 +32,7 @@
     <ClInclude Include="negative.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cli.h">
+    <ClInclude Include="command_line.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

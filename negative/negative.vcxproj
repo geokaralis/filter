@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cli.cpp" />
+    <ClCompile Include="command_line.cpp" />
     <ClCompile Include="negative.cpp" />
     <ClCompile Include="negative_main.cpp" />
   </ItemGroup>
@@ -32,7 +32,7 @@
     <None Include="Image01.ppm" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cli.h" />
+    <ClInclude Include="command_line.h" />
     <ClInclude Include="negative.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

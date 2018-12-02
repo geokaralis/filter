@@ -123,5 +123,6 @@ bool Image::save(const std::string & filename, const std::string & format) {
 			return true;
 		}
 	}
+
 	return false;
 }
