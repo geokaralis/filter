@@ -61,7 +61,7 @@ void negative::CreateNegativeImage(std::string filename)
 		Color *color = image->getRawDataPtr();
 
 		negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
-
+		
 		if (image->save(filename, "ppm")) {
 			LOG("Image dimensions are: " << image->getWidth() << " X " << image->getHeight());
 		}

@@ -101,13 +101,18 @@ bool Image::load(const std::string & filename, const std::string & format) {
 		{
 			this->~Image();
 		}
-		int w = this->getWidth();
-		int h = this->getHeight();
+		int w = width;
+		int h = height;
 
 		float *data = ReadPPM(s0, &w, &h);
 
+		width = w;
+		height = h;
+
+		buffer = new Color[w*h];
 
 		int p = 0;
+
 
 		for (int i = 0; i < w*h; i++) {
 			this->buffer[i].r = data[p];
@@ -148,15 +153,17 @@ bool Image::save(const std::string & filename, const std::string & format) {
 		// Checking if the current Image object is initialized.
 		if (this != nullptr)
 		{
+			int w = width;
+			int h = height;
+
+			if (WritePPM((float*)buffer, w, h, s0)) {
+				std::cout << "Negative image created successfully" << std::endl;
+			}
+
 			return true;
 		}
 
-		int w = this->getWidth();
-		int h = this->getHeight();
-
-		if (WritePPM((float*)buffer, w, h, s0)) {
-			std::cout << "Negative image created successfully" << std::endl;
-		}
+		
 	}
 
 	return false;
