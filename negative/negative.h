@@ -1,3 +1,5 @@
+// George Kavalieros (3120048)
+// George Karalis (3120058)
 #pragma once
 
 #include <iostream>
@@ -5,6 +7,7 @@
 #include "image.h"
 #include "ppm.h"
 
+#define LOG(x) std::cout << x << std::endl;
 #define IMAGE_SIZE width * height
 
 using namespace imaging;
@@ -28,5 +31,7 @@ namespace negative {
 	//
 	// \return an array of type Color with it's negative values
 	Color* ApplyNegativeFilter(Color* color, int width, int height);
+
+	void CreateNegativeImage(std::string filename);
 }
 

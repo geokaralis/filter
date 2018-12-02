@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "ppm.h"
+
 using namespace imaging;
 
 Color * Image::getRawDataPtr() {
@@ -75,6 +77,11 @@ bool Image::load(const std::string & filename, const std::string & format) {
 	std::istringstream iss(filename);
 	std::string extension, token;
 
+	char* s0;
+	// Converts: std::string to char*
+	s0 = new char[filename.size() + 1];
+	memcpy(s0, filename.c_str(), filename.size() + 1);
+
 	// Extracting the extension from the given filename.
 	while (std::getline(iss, token, '.'))
 		if (!token.empty()) extension = token;
@@ -94,6 +101,22 @@ bool Image::load(const std::string & filename, const std::string & format) {
 		{
 			this->~Image();
 		}
+		int w = this->getWidth();
+		int h = this->getHeight();
+
+		float *data = ReadPPM(s0, &w, &h);
+
+
+		int p = 0;
+
+		for (int i = 0; i < w*h; i++) {
+			this->buffer[i].r = data[p];
+			this->buffer[i].g = data[p + 1];
+			this->buffer[i].b = data[p + 2];
+
+			p = p + 3;
+		}
+
 		return true;
 	}
 	return false;
@@ -102,6 +125,11 @@ bool Image::load(const std::string & filename, const std::string & format) {
 bool Image::save(const std::string & filename, const std::string & format) {
 	std::istringstream iss(filename);
 	std::string extension, token;
+
+	char* s0;
+	// Converts: std::string to char*
+	s0 = new char[filename.size() + 1];
+	memcpy(s0, filename.c_str(), filename.size() + 1);
 
 	// Extracting the extension from the given filename.
 	while (std::getline(iss, token, '.'))
@@ -121,6 +149,13 @@ bool Image::save(const std::string & filename, const std::string & format) {
 		if (this != nullptr)
 		{
 			return true;
+		}
+
+		int w = this->getWidth();
+		int h = this->getHeight();
+
+		if (WritePPM((float*)buffer, w, h, s0)) {
+			std::cout << "Negative image created successfully" << std::endl;
 		}
 	}
 

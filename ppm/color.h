@@ -1,3 +1,5 @@
+// George Kavalieros (3120048)
+// George Karalis (3120058)
 //------------------------------------------------------------
 //
 // C++ course tutorial code 

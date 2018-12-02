@@ -1,4 +1,7 @@
+// George Kavalieros (3120048)
+// George Karalis (3120058)
 #pragma once
+
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -11,9 +14,7 @@
 namespace CommandLine {
 	void PrintLogo();
 	bool FilePresent(int argc);
-
-	char* PromptUser(std::string &input);
-
+	void PromptUser(std::string &input);
 	int Init(int argc, char** argv);
 }
 

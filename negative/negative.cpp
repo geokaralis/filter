@@ -49,3 +49,25 @@ Color * negative::ApplyNegativeFilter(Color * color, int width, int height)
 
 	return color;
 }
+
+void negative::CreateNegativeImage(std::string filename)
+{
+	
+
+	Image *image = new Image();
+
+	if (image->load(filename, "ppm")) {
+
+		Color *color = image->getRawDataPtr();
+
+		negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
+
+		if (image->save(filename, "ppm")) {
+			LOG("Image dimensions are: " << image->getWidth() << " X " << image->getHeight());
+		}
+	}
+	else {
+		std::cout << "File isn't recognized as a valid ppm image." << std::endl;
+		std::cout << "Only .ppm files are accepted." << std::endl;
+	}
+}
