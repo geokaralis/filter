@@ -29,9 +29,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Image01.ppm" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="command_line.h" />
     <ClInclude Include="negative.h" />
   </ItemGroup>
