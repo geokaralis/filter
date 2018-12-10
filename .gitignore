@@ -260,5 +260,6 @@ paket-files/
 __pycache__/
 *.pyc
 
-#PPM image test files
+# PPM image test files
+data/
 *.ppm
