@@ -1,5 +1,4 @@
 #include "ppm.h"
-#include "image.h"
 
 #include <iostream>
 #include <sstream>

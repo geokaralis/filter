@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="image.cpp" />
     <ClCompile Include="command_line.cpp" />
     <ClCompile Include="negative.cpp" />
     <ClCompile Include="negative_main.cpp" />
@@ -29,6 +30,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="color.h" />
+    <ClInclude Include="image.h" />
     <ClInclude Include="command_line.h" />
     <ClInclude Include="negative.h" />
   </ItemGroup>
