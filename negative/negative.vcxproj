@@ -23,6 +23,7 @@
     <ClCompile Include="command_line.cpp" />
     <ClCompile Include="negative.cpp" />
     <ClCompile Include="negative_main.cpp" />
+    <ClCompile Include="ui\window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ppm\ppm.vcxproj">
@@ -34,6 +35,11 @@
     <ClInclude Include="image.h" />
     <ClInclude Include="command_line.h" />
     <ClInclude Include="negative.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="ui\window.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="resource.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

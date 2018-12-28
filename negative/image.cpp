@@ -17,9 +17,9 @@ Color Image::getPixel(unsigned int x, unsigned int y) const {
 	// Checking the bounds of Image.
 	if (x < width && y < height && x >= 0 && y >= 0)
 	{
-		c.r = buffer[x*width + y].r;
-		c.g = buffer[x*width + y].g;
-		c.b = buffer[x*width + y].b;
+		c.r = buffer[x + (y * width)].r;
+		c.g = buffer[x + (y * width)].g;
+		c.b = buffer[x + (y * width)].b;
 	}
 	return c;
 }
@@ -28,9 +28,9 @@ void Image::setPixel(unsigned int x, unsigned int y, Color & value) {
 	// Checking the bounds of Image.
 	if (x < width && y < height && x >= 0 && y >= 0)
 	{
-		buffer[x*width + y].r = value.r;
-		buffer[x*width + y].g = value.g;
-		buffer[x*width + y].b = value.b;
+		buffer[x + (y * width)].r = value.r;
+		buffer[x + (y * width)].g = value.g;
+		buffer[x + (y * width)].b = value.b;
 	}
 }
 
