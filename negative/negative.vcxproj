@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Array.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="command_line.cpp" />
     <ClCompile Include="negative.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="negative.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ui\window.h" />
+    <ClInclude Include="Vec3.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
