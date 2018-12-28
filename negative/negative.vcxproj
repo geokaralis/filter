@@ -30,6 +30,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Array.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="command_line.h" />
