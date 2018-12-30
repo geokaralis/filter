@@ -6,17 +6,17 @@
     <ClCompile Include="negative.cpp" />
     <ClCompile Include="negative_main.cpp" />
     <ClCompile Include="ui\window.cpp" />
-    <ClCompile Include="Array.cpp" />
+    <ClCompile Include="array.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Array.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="command_line.h" />
     <ClInclude Include="negative.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ui\window.h" />
-    <ClInclude Include="Vec3.h" />
+    <ClInclude Include="vec3.h" />
+    <ClInclude Include="array.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />

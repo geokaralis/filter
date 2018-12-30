@@ -8,6 +8,20 @@
 
 using namespace imaging;
 
+Image::Image() : Array() {}
+
+Image::Image(unsigned int width, unsigned int height) : Array(width, height) {}
+
+Image::Image(unsigned int width, unsigned int height, const Color * data_ptr) : Array(width, height, data_ptr) {}
+
+Image::Image(const Image &src) : Array(src) {}
+
+Image::~Image()
+{
+	buffer.clear();
+	buffer.shrink_to_fit();
+}
+
 bool Image::load(const std::string & filename, const std::string & format) {
 	std::istringstream iss(filename);
 	std::string extension, token;
@@ -53,6 +67,7 @@ bool Image::load(const std::string & filename, const std::string & format) {
 			p = p + 3;
 
 			buffer.push_back(c);
+			
 		}
 
 		return true;
@@ -90,11 +105,15 @@ bool Image::save(const std::string & filename, const std::string & format) {
 			int h = height;
 
 			float* array = new float[3*w*h];
+
+			int p = 0;
 			for (int i = 0; i < w*h; i++)
 			{
-				array[i] = buffer[i].r;
-				array[i + 1] = buffer[i].g;
-				array[i + 2] = buffer[i].b;
+				array[p] = buffer[i].r;
+				array[p + 1] = buffer[i].g;
+				array[p + 2] = buffer[i].b;
+
+				p += 3;
 			}
 
 			if (WritePPM((float *)array, w, h, s0)) {

@@ -27,16 +27,16 @@ namespace math
 
 	public:
 		// data members
-		
+
 		//! The first coordinate of the vector
-		union { S x, r; }; 
-		
+		union { S x, r; };
+
 		//! The second coordinate of the vector
-		union { S y, g; }; 
-		
+		union { S y, g; };
+
 		//! The third coordinate of the vector
-		union { S z, b; }; 
-		
+		union { S z, b; };
+
 		// member functions
 
 		/*! Clamps all coordinates so that they are at least val
@@ -64,7 +64,7 @@ namespace math
 		}
 
 		/*! Data access operator.
-		 * 
+		 *
 		 *  \param index is the zero-based index to the elements of the vector. No bounds checking is performed for performance reasons.
 		 *
 		 *  \return the index-th element of the vector.
@@ -138,7 +138,7 @@ namespace math
 		*
 		* No checks are made for zero divisor.
 		*
-		* \param right is the scalar divisor. 
+		* \param right is the scalar divisor.
 		*
 		* \return a new vector whose elements are the elements of the current vector divided by the right operand.
 		*/
@@ -269,7 +269,7 @@ namespace math
 		Vec3<S>(S val) : x(val), y(val), z(val) {}
 
 		/*! Default constructor.
-		 * 
+		 *
 		 * Initializes all elements to their default numerical value.
 		 */
 		Vec3<S>() : x(), y(), z() {}
@@ -281,7 +281,7 @@ namespace math
 		// asignment and equality
 
 
-		/*! Copy assignment operator. 
+		/*! Copy assignment operator.
 		*
 		* \param right is the vector to copy.
 		*
@@ -328,7 +328,7 @@ namespace math
 	template<typename S>
 	Vec3<S> operator * (S a, Vec3<S> v)
 	{
-		return v*a;
+		return v * a;
 	}
 
 	/*! Scalar-vector multiplication with scalar promotion to typename S.
@@ -341,7 +341,7 @@ namespace math
 	template<typename S>
 	Vec3<S> operator * (int a, Vec3<S> v)
 	{
-		return v*S(a);
+		return v * S(a);
 	}
 
 	/*! Vector-scalar multiplication with scalar promotion to typename S.
@@ -354,7 +354,7 @@ namespace math
 	template<typename S>
 	Vec3<S> operator * (Vec3<S> v, int a)
 	{
-		return v*S(a);
+		return v * S(a);
 	}
 
 	/*! Vector division by a scalar, using scalar promotion to typename S.
@@ -367,7 +367,7 @@ namespace math
 	template<typename S>
 	Vec3<S> operator / (Vec3<S> v, int a)
 	{
-		return v/S(a);
+		return v / S(a);
 	}
 
 

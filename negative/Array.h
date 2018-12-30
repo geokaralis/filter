@@ -8,6 +8,8 @@
 #include <vector>
 #include "Vec3.h"
 
+#define Color math::Vec3<float>
+
 namespace math
 {
 	template<typename T>
@@ -35,7 +37,7 @@ namespace math
 		~Array();
 
 		Array<T> & operator = (const Array & right);
-		Array<T> & operator () (unsigned int x, unsigned int y);
+		T operator () (unsigned int x, unsigned int y);
 
 	};
 

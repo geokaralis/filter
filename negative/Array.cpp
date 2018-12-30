@@ -14,7 +14,7 @@ T Array<T>::getElement(unsigned int x, unsigned int y) const
 	T element;
 	if (x < width && y < height && x >= 0 && y >= 0)
 	{
-		T = buffer[x*width + y];
+		element = buffer[x*width + y];
 	}
 	return element;
 }
@@ -29,9 +29,9 @@ void Array<T>::setElement(unsigned int x, unsigned int y, T & value)
 }
 
 template<typename T>
-void Array<T>::setData(const T *& data_ptr)
+void Array<T>::setData(const T *&data_ptr)
 {
-	buffer(data_ptr);
+	//buffer = data_ptr;
 }
 
 template<typename T>
@@ -53,7 +53,7 @@ Array<T>::Array(unsigned int width, unsigned int height, const T * data_ptr)
 {
 	this->width = width;
 	this->height = height;
-	setData(data_ptr);
+	//setData(data_ptr);
 }
 
 template<typename T>
@@ -61,7 +61,7 @@ Array<T>::Array(const Array &src)
 {
 	width = src.width;
 	height = src.height;
-	buffer(src.buffer);
+	buffer = src.buffer;
 }
 
 template<typename T>
@@ -76,11 +76,14 @@ Array<T> & Array<T>::operator = (const Array & right)
 {
 	width = right.width;
 	height = right.height;
-	buffer(right.buffer);
+	buffer = right.buffer;
+	return *this;
 }
 
 template<typename T>
-Array<T> & Array<T>::operator()(unsigned int x, unsigned int y)
+T Array<T>::operator()(unsigned int x, unsigned int y)
 {
-	this->setElement(x, y);
+	return this->getElement(x, y);
 }
+
+template class Array<Color>;
