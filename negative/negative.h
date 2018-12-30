@@ -30,7 +30,7 @@ namespace negative {
 	// \param height is the image height
 	//
 	// \return an array of type Color with it's negative values
-	Color* ApplyNegativeFilter(Color* color, int width, int height);
+	std::vector<Color> ApplyNegativeFilter(std::vector<Color> color, int width, int height);
 
 	void CreateNegativeImage(std::string filename);
 }

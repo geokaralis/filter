@@ -28,7 +28,7 @@ LRESULT CALLBACK ui::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 		FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
 
 		if (image->load(filename, "ppm")) {
-			color = image->getRawDataPtr();
+			std::vector<Color> color = image->getRawDataPtr();
 			negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
 
 			COLORREF *arr = (COLORREF*)calloc(image->getWidth() * image->getHeight(), sizeof(COLORREF));

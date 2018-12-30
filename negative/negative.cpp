@@ -36,7 +36,7 @@ Color * negative::FillColorFromRawData(Color * color, float * data, int width, i
 	return color;
 }
 
-Color * negative::ApplyNegativeFilter(Color * color, int width, int height)
+std::vector<Color> negative::ApplyNegativeFilter(std::vector<Color> color, int width, int height)
 {
 	Color* white = new Color(1, 1, 1); // (1, 1, 1) is white since each color channel 
 									   // goes from 0.0f (darkness) to 1.0f (full color brightness).
@@ -55,7 +55,7 @@ void negative::CreateNegativeImage(std::string filename)
 	Image *image = new Image();
 
 	if (image->load(filename, "ppm")) {
-		Color *color = image->getRawDataPtr();
+		std::vector<Color> color = image->getRawDataPtr();
 		negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
 	}
 	else {

@@ -36,7 +36,7 @@ namespace math
 		
 		//! The third coordinate of the vector
 		union { S z, b; }; 
-
+		
 		// member functions
 
 		/*! Clamps all coordinates so that they are at least val

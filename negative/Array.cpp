@@ -3,7 +3,7 @@
 using namespace math;
 
 template<typename T>
-std::vector<T> * Array<T>::getRawDataPtr()
+std::vector<T> Array<T>::getRawDataPtr()
 {
 	return buffer;
 }
@@ -11,12 +11,27 @@ std::vector<T> * Array<T>::getRawDataPtr()
 template<typename T>
 T Array<T>::getElement(unsigned int x, unsigned int y) const
 {
-
+	T element;
 	if (x < width && y < height && x >= 0 && y >= 0)
 	{
-
+		T = buffer[x*width + y];
 	}
-	return T;
+	return element;
+}
+
+template<typename T>
+void Array<T>::setElement(unsigned int x, unsigned int y, T & value)
+{
+	if (x < width && y < height && x >= 0 && y >= 0)
+	{
+		buffer[x*width + y] = value;
+	}
+}
+
+template<typename T>
+void Array<T>::setData(const T *& data_ptr)
+{
+	buffer(data_ptr);
 }
 
 template<typename T>
@@ -59,15 +74,13 @@ Array<T>::~Array()
 template<typename T>
 Array<T> & Array<T>::operator = (const Array & right)
 {
-	width = src.width;
-	height = src.height;
-	buffer(src.buffer);
+	width = right.width;
+	height = right.height;
+	buffer(right.buffer);
 }
 
 template<typename T>
 Array<T> & Array<T>::operator()(unsigned int x, unsigned int y)
 {
-	Array arr(i, j);
-	
-	return T;
+	this->setElement(x, y);
 }

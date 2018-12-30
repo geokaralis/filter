@@ -10,7 +10,8 @@
 
 namespace math
 {
-	template<typename T>class Array
+	template<typename T>
+	class Array
 	{
 	protected:
 		std::vector<T> buffer;
@@ -20,7 +21,7 @@ namespace math
 		const unsigned int getWidth() const { return width; }
 		const unsigned int getHeight() const { return height; }
 
-		std::vector<T> * getRawDataPtr();
+		std::vector<T> getRawDataPtr();
 
 		T getElement(unsigned int x, unsigned int y) const;
 		void setElement(unsigned int x, unsigned int y, T & value);
