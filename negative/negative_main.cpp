@@ -2,7 +2,7 @@
 // George Karalis (3120058)
 // The application's entry point
 
-//#include "ui/window.h"
+#include "ui/window.h"
 #include "command_line.h"
 #include "resource.h"
 

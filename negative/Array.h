@@ -28,7 +28,7 @@ namespace math
 		T getElement(unsigned int x, unsigned int y) const;
 		void setElement(unsigned int x, unsigned int y, T & value);
 
-		void setData(const T * & data_ptr);
+		void setData(const std::vector<T> data_ptr);
 
 		Array();
 		Array(unsigned int width, unsigned int height);

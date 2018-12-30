@@ -56,7 +56,8 @@ void negative::CreateNegativeImage(std::string filename)
 
 	if (image->load(filename, "ppm")) {
 		std::vector<Color> color = image->getRawDataPtr();
-		negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
+		color = ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
+		image->setData(color);
 	}
 	else {
 		std::cout << "File isn't recognized as a valid ppm image." << std::endl;

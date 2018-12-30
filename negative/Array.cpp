@@ -29,9 +29,10 @@ void Array<T>::setElement(unsigned int x, unsigned int y, T & value)
 }
 
 template<typename T>
-void Array<T>::setData(const T *&data_ptr)
+void Array<T>::setData(const std::vector<T> data_ptr)
 {
-	//buffer = data_ptr;
+
+	buffer = data_ptr;
 }
 
 template<typename T>

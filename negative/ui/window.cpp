@@ -29,7 +29,7 @@ LRESULT CALLBACK ui::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 
 		if (image->load(filename, "ppm")) {
 			std::vector<Color> color = image->getRawDataPtr();
-			negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
+			color = negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
 
 			COLORREF *arr = (COLORREF*)calloc(image->getWidth() * image->getHeight(), sizeof(COLORREF));
 			// Need to convert image to b g r from rgb
