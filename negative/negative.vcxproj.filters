@@ -17,6 +17,8 @@
     <ClInclude Include="ui\window.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="array.h" />
+    <ClInclude Include="filter.h" />
+    <ClInclude Include="filterLinear.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="resource.rc" />
