@@ -56,8 +56,8 @@ void negative::CreateNegativeImage(std::string filename)
 {
 	Image *image = new Image();
 
-	Color* a = new Color(1, 1, 1);
-	Color* c = new Color(-1, -1, -1);
+	Color* a = new Color(-1, -1, -1);
+	Color* c = new Color(1, 1, 1);
 
 	if (image->load(filename, "ppm")) {
 		
@@ -66,9 +66,27 @@ void negative::CreateNegativeImage(std::string filename)
 
 		FilterLinear* linear_filter = new FilterLinear(*a, *c);
 
+		FilterGamma* gamma_filter = new FilterGamma();
+
 		*image = *linear_filter << *image;
 
-		std::vector<Color> imageData = image->getRawDataPtr();
+		*image = *gamma_filter << *image;
+
+		/*std::vector<Color> imageData = image->getRawDataPtr();
+
+		std::cout << "[DEBUG][Negative]: Red value copied from source image: " << image->getElement(0, 0).r << std::endl;
+		Image im = *image;
+		Color c1 = *c;
+		Color a1 = *a;*/
+		/*for (unsigned int i = 0; i < image->getWidth(); ++i) {
+			for (unsigned int j = 0; j < image->getHeight(); ++j) {
+				image->getElement(i,j) = image->getElement(i, j) + c1;
+			}
+		}*/
+
+		/*image->getElement(0, 0) = image->getElement(0, 0).r + 1;*/
+
+		//std::cout << "[DEBUG][Negative]: Red value after mod: " << image->getElement(0, 0).r << std::endl;
 
 		/*math::Array<Color> arr1;
 		math::Array<Color> arr2;

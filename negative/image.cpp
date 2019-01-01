@@ -12,7 +12,7 @@ Image::Image() : Array() {}
 
 Image::Image(unsigned int width, unsigned int height) : Array(width, height) {}
 
-Image::Image(unsigned int width, unsigned int height, const Color * data_ptr) : Array(width, height, data_ptr) {}
+Image::Image(unsigned int width, unsigned int height, const std::vector<Color> data_ptr) : Array(width, height, data_ptr) {}
 
 Image::Image(const Image &src) : Array(src) {}
 

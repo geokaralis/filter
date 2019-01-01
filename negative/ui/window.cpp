@@ -36,8 +36,17 @@ LRESULT CALLBACK ui::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 		FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
 
 		if (image->load(filename, "ppm")) {
+
+			Color* a = new Color(1, 1, 1);
+			Color* c = new Color(-1, -1, -1);
+
+			FilterLinear* linear_filter = new FilterLinear(*a, *c);
+
+			*image = *linear_filter << *image;
+
 			std::vector<Color> color = image->getRawDataPtr();
-			color = negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
+	
+			//color = negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
 
 			COLORREF *arr = (COLORREF*)calloc(image->getWidth() * image->getHeight(), sizeof(COLORREF));
 			// Need to convert image to b g r from rgb

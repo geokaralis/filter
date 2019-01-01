@@ -32,7 +32,7 @@ namespace math
 			T element;
 			if (x < width && y < height && x >= 0 && y >= 0)
 			{
-				element = buffer[x*width + y];
+				element = buffer[y*width + x];
 			}
 			return element;
 		}
@@ -40,7 +40,7 @@ namespace math
 		void setElement(unsigned int x, unsigned int y, T & value) {
 			if (x < width && y < height && x >= 0 && y >= 0)
 			{
-				buffer[x*width + y] = value;
+				buffer[y*width + x] = value;
 			}
 		}
 
@@ -58,10 +58,10 @@ namespace math
 			this->height = height;
 		}
 
-		Array(unsigned int width, unsigned int height, const T * data_ptr) {
+		Array(unsigned int width, unsigned int height, const std::vector<T> data_ptr) {
 			this->width = width;
 			this->height = height;
-			//setData(data_ptr);
+			setData(data_ptr);
 		}
 		Array(const Array &src) {
 			width = src.width;

@@ -3,7 +3,7 @@
 #ifndef _FILTER
 #define _FILTER
 
-#include "image.h"
+#include "../image.h"
 
 namespace imaging
 {

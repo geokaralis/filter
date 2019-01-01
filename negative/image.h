@@ -45,11 +45,18 @@ namespace imaging
 
 		Image(unsigned int width, unsigned int height);
 
-		Image(unsigned int width, unsigned int height, const Color * data_ptr);
+		Image(unsigned int width, unsigned int height, const std::vector<Color> data_ptr);
 
 		Image(const Image &src);
 
 		~Image();
+
+		Image& operator=(const Image & right) {
+			width = right.width;
+			height = right.height;
+			buffer = right.buffer;
+			return *this;
+		}
 
 		Color operator()(unsigned int x, unsigned int y) {
 			Color c = getElement(x, y);

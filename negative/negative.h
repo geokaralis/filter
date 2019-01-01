@@ -7,6 +7,7 @@
 #include "image.h"
 #include "ppm.h"
 #include "filter/filter_linear.h"
+#include "filter/filter_gamma.h"
 
 #define LOG(x) std::cout << x << std::endl;
 #define IMAGE_SIZE width * height

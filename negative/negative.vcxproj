@@ -35,6 +35,7 @@
     <ClInclude Include="array.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="filter\filter.h" />
+    <ClInclude Include="filter\filter_gamma.h" />
     <ClInclude Include="filter\filter_linear.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="command_line.h" />
