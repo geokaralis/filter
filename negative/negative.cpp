@@ -77,7 +77,7 @@ void negative::CreateNegativeImage(std::string filename)
 
 		arr1(2, 3);*/
 
-		image->setData(imageData);
+		//image->setData(imageData);
 	}
 	else {
 		std::cout << "File isn't recognized as a valid ppm image." << std::endl;

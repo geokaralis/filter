@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="60px" height="60px" viewBox="0 0 60 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="-2.48949813e-15%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#00F5E1" stop-opacity="0.6" offset="0%"></stop>
+            <stop stop-color="#00E7C0" stop-opacity="0.6" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="-2.48949813e-15%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#00F5E1" offset="0%"></stop>
+            <stop stop-color="#00C7A6" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#242424" x="0" y="0" width="60" height="60"></rect>
+        <rect id="Rectangle" stroke="url(#linearGradient-2)" stroke-width="0.5" fill="url(#linearGradient-1)" fill-rule="nonzero" x="15.25" y="15.25" width="29.5" height="29.5" rx="4"></rect>
+        <rect id="Rectangle-2" fill="#242424" fill-rule="nonzero" x="22" y="25" width="16" height="2"></rect>
+        <rect id="Rectangle-2-Copy" fill="#242424" fill-rule="nonzero" x="24" y="29" width="12" height="2"></rect>
+        <rect id="Rectangle-2-Copy-2" fill="#242424" fill-rule="nonzero" x="27" y="33" width="6" height="2"></rect>
+    </g>
+</svg>
