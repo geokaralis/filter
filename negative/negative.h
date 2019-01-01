@@ -6,6 +6,7 @@
 
 #include "image.h"
 #include "ppm.h"
+#include "filterLinear.h"
 
 #define LOG(x) std::cout << x << std::endl;
 #define IMAGE_SIZE width * height

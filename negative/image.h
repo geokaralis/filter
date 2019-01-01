@@ -51,6 +51,7 @@ namespace imaging
 
 		bool load(const std::string & filename, const std::string & format);
 
+
 		/*!
 		* Stores the image data to the specified file, if the extension of the filename matches the format string.
 		*

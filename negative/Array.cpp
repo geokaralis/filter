@@ -81,10 +81,4 @@ Array<T> & Array<T>::operator = (const Array & right)
 	return *this;
 }
 
-template<typename T>
-T Array<T>::operator()(unsigned int x, unsigned int y)
-{
-	return this->getElement(x, y);
-}
-
 template class Array<Color>;

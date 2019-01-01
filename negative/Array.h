@@ -37,7 +37,12 @@ namespace math
 		~Array();
 
 		Array<T> & operator = (const Array & right);
-		T operator () (unsigned int x, unsigned int y);
+
+		friend T operator () (unsigned int x, unsigned int y)
+		{
+			T element = getElement(x, y);
+			return element;
+		}
 
 	};
 
