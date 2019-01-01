@@ -13,12 +13,8 @@
     <ClInclude Include="image.h" />
     <ClInclude Include="command_line.h" />
     <ClInclude Include="negative.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="ui\window.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="array.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="resource.rc" />
   </ItemGroup>
 </Project>

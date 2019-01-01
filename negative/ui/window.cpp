@@ -1,11 +1,19 @@
 #include "window.h"
-#include "../resource.h"
+
+#define IDM_FILE_NEW 1
+#define IDM_FILE_OPEN 2
+#define IDM_FILE_QUIT 3
+
+void AddMenus(HWND);
 
 LRESULT CALLBACK ui::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
 	Image *image = new Image();
 	Color *color = new Color();
 
 	switch (uMsg) {
+	case WM_CREATE:
+		AddMenus(hwnd);
+		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
@@ -74,8 +82,6 @@ LRESULT CALLBACK ui::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 		//return 0;
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
-		case ID_FILE_OPEN:
-			//negative::ApplyNegativeFilter(color, image->getWidth(), image->getHeight());
 			//DoFileOpen();
 			break;
 		default:
@@ -85,4 +91,29 @@ LRESULT CALLBACK ui::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 		return DefWindowProc(hwnd, uMsg, wParam, lParam);
 	}
 	return NULL;
+}
+
+
+
+void AddMenus(HWND hwnd) {
+
+	HMENU hMenubar;
+	HMENU hMenu;
+
+	hMenubar = CreateMenu();
+	hMenu = CreateMenu();
+
+	AppendMenuW(hMenu, MF_STRING, IDM_FILE_NEW, L"&New");
+	AppendMenuW(hMenu, MF_STRING, IDM_FILE_OPEN, L"&Open");
+	AppendMenuW(hMenu, MF_SEPARATOR, 0, NULL);
+	AppendMenuW(hMenu, MF_STRING, IDM_FILE_QUIT, L"&Quit");
+
+	AppendMenuW(hMenubar, MF_POPUP, (UINT_PTR)hMenu, L"&File");
+
+	HMENU hMenu2 = CreateMenu();
+
+	AppendMenuW(hMenu2, MF_STRING, IDM_FILE_NEW, L"&Negative");
+
+	AppendMenuW(hMenubar, MF_POPUP, (UINT_PTR)hMenu2, L"&Edit");
+	SetMenu(hwnd, hMenubar);
 }
