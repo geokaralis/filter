@@ -66,9 +66,10 @@ void negative::CreateNegativeImage(std::string filename)
 
 		FilterLinear* linear_filter = new FilterLinear(*a, *c);
 
-		FilterGamma* gamma_filter = new FilterGamma();
+		float f = 2.0f;
+		FilterGamma* gamma_filter = new FilterGamma(f);
 
-		*image = *linear_filter << *image;
+		//*image = *linear_filter << *image;
 
 		*image = *gamma_filter << *image;
 

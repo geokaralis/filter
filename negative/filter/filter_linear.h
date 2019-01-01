@@ -1,6 +1,6 @@
 #pragma once
-#ifndef _FILTERLINEAR
-#define _FILTERLINEAR
+#ifndef _FILTER_LINEAR
+#define _FILTER_LINEAR
 
 #include "filter.h"
 
@@ -16,19 +16,14 @@ public:
 	{
 		Image img = image;
 
-		std::cout << "[DEBUG][FilterLinear]: Red value copied from source image: " << img.getElement(0,0).r << std::endl;
-
 		for (unsigned int i = 0; i < image.getWidth(); ++i) {
 			for (unsigned int j = 0; j < image.getHeight(); ++j) {
 				Color col = img(i, j) * a;
-				col = col + c;
+				col += c;
+				col = col.clampToLowerBound(1.0f);
 				img.setElement(i, j, col);
 			}
 		}
-
-		std::cout << "[DEBUG][FilterLinear]: Red value: " << img.getElement(0, 0).r << std::endl;
-
-
 		return img;
 	}
 
@@ -41,4 +36,4 @@ public:
 
 } //namespace imaging
 
-#endif
+#endif //!_FILTER_LINEAR

@@ -23,6 +23,27 @@ int CommandLine::Init(int argc, char** argv) {
 
 	std::string image_file;
 
+	// Store argv in a vector of strings. 
+	//(System cant tell how long argv is at compile time)
+	std::vector<std::string> arguments(argv, argv + argc);
+
+	//// Range-based for loop with argv.
+	//for (int i=0; i<arguments.size(); i++)
+	//{
+	//	if (arguments[i] == "-f")
+	//	{
+	//		i++;
+	//		if (arguments[i] == "gamma")
+	//		{
+
+	//		}
+	//		else if (arguments[i] == "linear")
+	//		{
+
+	//		}
+	//	}
+	//}
+
 	// Checking for user input.
 	if (CommandLine::FilePresent(argc))
 	{

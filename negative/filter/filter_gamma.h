@@ -10,19 +10,18 @@ namespace imaging
 {
 	class FilterGamma : public Filter
 	{
+	protected:
+		 float gamma;
 	public:
-		FilterGamma(){}
-		~FilterGamma(){}
 		Image operator << (const Image & image) {
 			Image filtered_image = image;
-			std::cout << "[DEBUG][FilterGamma]: Red pixel before gamma: " << filtered_image.getElement(0, 0).r << std::endl;
 
 			for (unsigned int i = 0; i < image.getWidth(); ++i) {
 				for (unsigned int j = 0; j < image.getHeight(); ++j) {
 
-					int r = std::pow(filtered_image(i, j).r, 0.2);
-					int g = std::pow(filtered_image(i, j).g, 0.2);
-					int b = std::pow(filtered_image(i, j).b, 0.2);
+					float r = std::pow(filtered_image(i, j).r, gamma);
+					float g = std::pow(filtered_image(i, j).g, gamma);
+					float b = std::pow(filtered_image(i, j).b, gamma);
 
 					
 
@@ -34,13 +33,13 @@ namespace imaging
 					filtered_image.setElement(i, j, col);
 				}
 			}
-
-			std::cout << "[DEBUG][FilterGamma]: Red pixel after gamma: " << filtered_image.getElement(0, 0).r << std::endl;
 			return filtered_image;
 		}
-	private:
 
+		FilterGamma(float &gamma) 
+			: gamma(gamma) {}
 
+		~FilterGamma() {}
 	};
 
 	//FilterGamma::FilterGamma()
@@ -66,5 +65,5 @@ namespace imaging
 		}
 		return filtered_image;
 	}*/
-}
+} // namespace imaging
 #endif // !FILTER_GAMMA_H
