@@ -56,22 +56,26 @@ void negative::CreateNegativeImage(std::string filename)
 {
 	Image *image = new Image();
 
-	Color *a = new Color(1, 1, 1);
-	Color *c = new Color(-1, -1, -1);
+	Color* a = new Color(1, 1, 1);
+	Color* c = new Color(-1, -1, -1);
 
 	if (image->load(filename, "ppm")) {
-		std::vector<Color> imageData = image->getRawDataPtr();
+		
 		/*imageData = ApplyNegativeFilter(imageData, image->getWidth(), image->getHeight());*/
-		//FilterLinear *f = new FilterLinear(a, c);
 
-		//*image = *f << *image;
 
-		math::Array<Color> arr1;
+		FilterLinear* linear_filter = new FilterLinear(*a, *c);
+
+		*image = *linear_filter << *image;
+
+		std::vector<Color> imageData = image->getRawDataPtr();
+
+		/*math::Array<Color> arr1;
 		math::Array<Color> arr2;
 
 		arr1 = arr2;
 
-		arr1(2, 3);
+		arr1(2, 3);*/
 
 		image->setData(imageData);
 	}

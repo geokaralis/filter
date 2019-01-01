@@ -34,8 +34,8 @@
   <ItemGroup>
     <ClInclude Include="array.h" />
     <ClInclude Include="color.h" />
-    <ClInclude Include="filter.h" />
-    <ClInclude Include="filterLinear.h" />
+    <ClInclude Include="filter\filter.h" />
+    <ClInclude Include="filter\filter_linear.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="command_line.h" />
     <ClInclude Include="negative.h" />
