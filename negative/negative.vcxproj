@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="array.cpp" />
+    <ClCompile Include="array_old.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="command_line.cpp" />
     <ClCompile Include="negative.cpp" />

@@ -4,6 +4,8 @@
 
 #include "filter.h"
 
+#include "Array.h"
+
 namespace imaging
 {
 	class FilterLinear: public Filter
@@ -13,11 +15,16 @@ namespace imaging
 	public:
 		virtual Image operator << (const Image & image)
 		{
-			for (int x = 0; x < image.getWidth(); x++)
+			for (unsigned int i = 0; i < image.getWidth(); ++i)
 			{
-				for (int y = 0; y < image.getHeight(); y++)
+				for (unsigned int j = 0; j < image.getHeight(); ++j)
 				{
-					image(x, y);
+					Image img;
+					
+
+					img = image;
+
+					img(i,j);
 				}
 			}
 		}

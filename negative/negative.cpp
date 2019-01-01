@@ -1,5 +1,7 @@
 #include "negative.h"
 
+#include "Array.h"
+
 using namespace negative;
 
 Color * negative::FillColorFromRawData(Color * color, float * data, int width, int height)
@@ -60,9 +62,16 @@ void negative::CreateNegativeImage(std::string filename)
 	if (image->load(filename, "ppm")) {
 		std::vector<Color> imageData = image->getRawDataPtr();
 		/*imageData = ApplyNegativeFilter(imageData, image->getWidth(), image->getHeight());*/
-		FilterLinear *f = new FilterLinear(a, c);
+		//FilterLinear *f = new FilterLinear(a, c);
 
-		*image = *f << *image;
+		//*image = *f << *image;
+
+		math::Array<Color> arr1;
+		math::Array<Color> arr2;
+
+		arr1 = arr2;
+
+		arr1(2, 3);
 
 		image->setData(imageData);
 	}

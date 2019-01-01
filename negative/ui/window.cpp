@@ -41,7 +41,7 @@ LRESULT CALLBACK ui::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 
 			COLORREF *arr = (COLORREF*)calloc(image->getWidth() * image->getHeight(), sizeof(COLORREF));
 			// Need to convert image to b g r from rgb
-			for (int i = 0; i < image->getWidth() * image->getHeight(); i++) {
+			for (unsigned int i = 0; i < image->getWidth() * image->getHeight(); i++) {
 				arr[i] = RGB(color[i].b * 255, color[i].g * 255, color[i].r * 255);
 			}
 			// Creating temp bitmap
@@ -81,12 +81,12 @@ LRESULT CALLBACK ui::WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPar
 		// Else: User canceled. Do nothing.
 		//return 0;
 	case WM_COMMAND:
-		switch (LOWORD(wParam)) {
-			//DoFileOpen();
-			break;
-		default:
-			break;
-		}
+		//switch (LOWORD(wParam)) {
+		//	//DoFileOpen();
+		//	break;
+		//default:
+		//	break;
+		//}
 	default:
 		return DefWindowProc(hwnd, uMsg, wParam, lParam);
 	}

@@ -15,6 +15,8 @@
 #include "Array.h"
 #include <string>
 
+#define Color math::Vec3<float>
+
 /*! The imaging namespace contains every class or function associated with the image storage, compression and manipulation.
  */
 namespace imaging
@@ -48,6 +50,11 @@ namespace imaging
 		Image(const Image &src);
 
 		~Image();
+
+		Color operator()(unsigned int x, unsigned int y) {
+			Color c = getElement(x, y);
+			return c;
+		}
 
 		bool load(const std::string & filename, const std::string & format);
 

@@ -6,7 +6,7 @@
     <ClCompile Include="negative.cpp" />
     <ClCompile Include="negative_main.cpp" />
     <ClCompile Include="ui\window.cpp" />
-    <ClCompile Include="array.cpp" />
+    <ClCompile Include="array_old.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="color.h" />

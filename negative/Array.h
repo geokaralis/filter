@@ -1,14 +1,13 @@
-#pragma once
+// This class consists of an abstract array definition
+// that manipulates data.
 
-#ifndef _ARRAY
-#define _ARRAY
+#ifndef _ARRAY_H
+#define _ARRAY_H
 
 
 #include <string>
 #include <vector>
 #include "Vec3.h"
-
-#define Color math::Vec3<float>
 
 namespace math
 {
@@ -17,33 +16,75 @@ namespace math
 	{
 	protected:
 		std::vector<T> buffer;
-		unsigned int width, height;
+		unsigned int width;
+		unsigned int height;
 
 	public:
 		const unsigned int getWidth() const { return width; }
+
 		const unsigned int getHeight() const { return height; }
 
-		std::vector<T> getRawDataPtr();
+		std::vector<T> getRawDataPtr() {
+			return buffer;
+		}
 
-		T getElement(unsigned int x, unsigned int y) const;
-		void setElement(unsigned int x, unsigned int y, T & value);
-
-		void setData(const std::vector<T> data_ptr);
-
-		Array();
-		Array(unsigned int width, unsigned int height);
-		Array(unsigned int width, unsigned int height, const T * data_ptr);
-		Array(const Array &src);
-		~Array();
-
-		Array<T> & operator = (const Array & right);
-
-		friend T operator () (unsigned int x, unsigned int y)
-		{
-			T element = getElement(x, y);
+		T getElement(unsigned int x, unsigned int y) const {
+			T element;
+			if (x < width && y < height && x >= 0 && y >= 0)
+			{
+				element = buffer[x*width + y];
+			}
 			return element;
 		}
 
+		void setElement(unsigned int x, unsigned int y, T & value) {
+			if (x < width && y < height && x >= 0 && y >= 0)
+			{
+				buffer[x*width + y] = value;
+			}
+		}
+
+		void setData(const std::vector<T> data_ptr) {
+			buffer = data_ptr;
+		}
+
+		Array() {
+			this->width = 0;
+			this->height = 0;
+		}
+
+		Array(unsigned int width, unsigned int height) {
+			this->width = width;
+			this->height = height;
+		}
+
+		Array(unsigned int width, unsigned int height, const T * data_ptr) {
+			this->width = width;
+			this->height = height;
+			//setData(data_ptr);
+		}
+		Array(const Array &src) {
+			width = src.width;
+			height = src.height;
+			buffer = src.buffer;
+		}
+
+		~Array() {
+			buffer.clear();
+			buffer.shrink_to_fit();
+		}
+
+		Array<T>& operator=(const Array & right) {
+			width = right.width;
+			height = right.height;
+			buffer = right.buffer;
+			return *this;
+		}
+
+		T operator()(unsigned int x, unsigned int y) {
+			T element = getElement(x, y);
+			return element;
+		}
 	};
 
 } //namespace math
