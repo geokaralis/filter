@@ -1,4 +1,4 @@
-![Filter](docs/filter.svg)
+![Filter](docs/filter_logo.svg)
 
 # Filter
 
