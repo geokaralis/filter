@@ -68,9 +68,11 @@ void negative::CreateNegativeImage(std::string filename)
 
 		FilterGamma* gamma_filter = new FilterGamma();
 
-		*image = *linear_filter << *image;
+		
 
 		*image = *gamma_filter << *image;
+
+		*image = *linear_filter << *image;
 
 		/*std::vector<Color> imageData = image->getRawDataPtr();
 
