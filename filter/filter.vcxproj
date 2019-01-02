@@ -119,6 +119,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="app\filter.cpp" />
     <ClCompile Include="base\command_line\command_line.cpp" />
     <ClCompile Include="app\filter_main.cpp" />
     <ClCompile Include="imaging\image.cpp" />

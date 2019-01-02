@@ -11,6 +11,7 @@ namespace imaging
 	{
 	public:
 		FilterGamma(float gamma) : gamma(gamma) { }
+		FilterGamma() : Filter() { }
 		~FilterGamma() {}
 		Image operator << (const Image & image) {
 			Image filtered_image = image;

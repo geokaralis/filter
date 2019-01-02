@@ -21,13 +21,17 @@ namespace imaging
 				for (unsigned int j = 0; j < image.getHeight(); ++j) {
 					Color color = img(i, j) * a;
 					color = color + c;
-					color = color.clampToLowerBound(1.0f);
+					color = color.clampToLowerBound(0.0f);
+					color = color.clampToUpperBound(1.0f);
 					img.setElement(i, j, color);
+
 				}
 			}
 
 			return img;
 		}
+
+		FilterLinear() : Filter() { }
 
 		FilterLinear(const Color& a, const Color& c)
 			: a(a),

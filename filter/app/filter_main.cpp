@@ -2,8 +2,8 @@
 // George Karalis (3120058)
 // The application's entry point
 
-#include "../base/command_line/command_line.h"
+#include "filter.h"
 
 int main(int argc, char** argv) {
-	base::CommandLine::Init(argc, argv);	
+	filter::InitApplication(argc, argv);
 }

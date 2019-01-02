@@ -24,6 +24,9 @@
     <ClCompile Include="imaging\image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="app\filter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\build.h">

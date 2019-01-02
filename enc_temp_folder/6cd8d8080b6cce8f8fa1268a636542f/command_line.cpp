@@ -141,11 +141,17 @@ CommandLine::~CommandLine() = default;
 void CommandLine::A(std::string filename, std::vector<std::vector<std::string>> filters) {
 	Image *image = new Image();
 
+	//for (auto f : filters) {
+	//	for (auto x : f) {
+	//		std::cout << x << std::endl;
+	//	}
+	//}
+
 	if (image->load(filename, "ppm")) {
 		for (int i = 0; i < filters.size(); ++i) {
 			if (filters[i][0] == "gamma") {
 				float gamma = std::stof(filters[i][1]);
-
+				std::cout << "BHKE GAMMA" << std::endl;
 				FilterGamma *filter_gamma = new FilterGamma(gamma);
 				*image = *filter_gamma << *image;
 			}else if (filters[i][0] == "linear") {
@@ -158,7 +164,7 @@ void CommandLine::A(std::string filename, std::vector<std::vector<std::string>> 
 
 				Color* a = new Color(aR, aG, aB);
 				Color* c = new Color(cR, cG, cB);
-
+				std::cout << "BHKE LINEAR" << std::endl;
 				FilterLinear *filter_linear = new FilterLinear(*a, *c);
 				*image = *filter_linear << *image;
 			}
