@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard Copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#6B6969" offset="0%"></stop>
+            <stop stop-color="#393838" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Artboard-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-2" stroke="url(#linearGradient-1)" fill-rule="nonzero" x="0.5" y="0.5" width="31" height="31"></rect>
+        <rect id="Rectangle-3-Copy" fill="#393838" fill-rule="nonzero" x="11" y="1" width="10" height="10"></rect>
+        <rect id="Rectangle-3-Copy-3" fill="#EA3493" fill-rule="nonzero" x="21" y="11" width="10" height="10"></rect>
+        <rect id="Rectangle-3-Copy-5" fill="#393838" fill-rule="nonzero" x="11" y="21" width="10" height="10"></rect>
+        <rect id="Rectangle-3-Copy-6" fill="#393838" fill-rule="nonzero" x="1" y="11" width="10" height="10"></rect>
+    </g>
+</svg>
