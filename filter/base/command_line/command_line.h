@@ -16,7 +16,8 @@ public:
 	int getArgc() const { return argc; }
 	char** getArgv() const { return argv; }
 
-	static int Init(int argc, char** argv);
+	static void Init(int argc, char** argv);
+	static int Terminate();
 		
 	CommandLine();
 	CommandLine(int argc, char** argv);
@@ -27,13 +28,6 @@ private:
 	char** argv;
 
 	static void PrintHeader();
-	static void LoadFile(std::string& input);
-	static bool ArgumentsExist(int argc);
-
-	static void A(std::string filename, std::vector<std::vector<std::string>> filters);
-
-	static bool FilePresent(int argc);
-	static std::vector<std::vector<std::string>> ReadFilters(std::vector<std::string> &args);
 };
 
 } //namespace base
