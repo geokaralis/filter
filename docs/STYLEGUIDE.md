@@ -6,7 +6,8 @@ All classes must have a curly brace underneath the initialization
 ```c++
 Class Foo 
 {
-  return 0;
+public:
+  ...
 }
 ```
 
