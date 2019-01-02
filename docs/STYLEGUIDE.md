@@ -1,6 +1,6 @@
-#Project style guide
+# Cpp style guide
 
-##Classes
+## Classes
 All classes must have a curly brace underneath the initialization
 
 ```c++
@@ -10,7 +10,7 @@ Class Foo
 }
 ```
 
-##Methods
+## Methods
 Similar to classes all methods must have a curly brace underneath the initialization
 
 ```c++
