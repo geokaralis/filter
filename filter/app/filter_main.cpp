@@ -2,8 +2,9 @@
 // George Karalis (3120058)
 // The application's entry point
 
-#include "filter.h"
+#include "application.h"
 
 int main(int argc, char** argv) {
-	filter::InitApplication(argc, argv);
+	// Initialize the core application
+	app::Init(argc, argv);
 }

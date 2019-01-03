@@ -24,15 +24,15 @@
     <ClCompile Include="imaging\image.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="app\filter.cpp">
+    <ClCompile Include="app\application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\build.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="app\filter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="imaging\image.h">
@@ -54,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="imaging\filter\filter_gamma.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="app\application.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

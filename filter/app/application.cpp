@@ -1,4 +1,4 @@
-#include "filter.h"
+#include "application.h"
 
 #include "../imaging/image.h"
 #include "../imaging/filter/filter_gamma.h"
@@ -10,7 +10,7 @@
 
 using namespace imaging;
 
-bool filter::ArgumentsExist(int argc)
+bool app::ArgumentsExist(int argc)
 {
 	if (argc > 2) {
 		return true;
@@ -19,7 +19,7 @@ bool filter::ArgumentsExist(int argc)
 	return false;
 }
 
-bool filter::FilePresent(int argc)
+bool app::FilePresent(int argc)
 {
 	if (argc < 2) {
 		return false;
@@ -27,7 +27,7 @@ bool filter::FilePresent(int argc)
 	return true;
 }
 
-void filter::LoadFile(std::string& input)
+void app::LoadFile(std::string& input)
 {
 	std::cout << "File name of the image to load: ";
 	std::cin >> input;
@@ -36,7 +36,7 @@ void filter::LoadFile(std::string& input)
 
 // Removes all filters from args.
 // Adds these filters to Allfilters.
-std::vector<std::vector<std::string>> filter::ParseFiltersFromArguments(std::vector<std::string> &args) {
+std::vector<std::vector<std::string>> app::ParseFiltersFromArguments(std::vector<std::string> &args) {
 	std::vector<std::string> filter;                        // contains a filter and its values            --> e.g. {"gamma", "2.0"}
 	std::vector<std::vector<std::string>> Allfilters;        // contains all filters and their values.    --> e.g. {{"gamma", "2.0"}, ... }
 
@@ -79,7 +79,7 @@ std::vector<std::vector<std::string>> filter::ParseFiltersFromArguments(std::vec
 	return Allfilters;
 }
 
-void filter::InitApplication(int argc, char ** argv)
+void app::Init(int argc, char ** argv)
 {
 	base::CommandLine::Init(argc, argv);
 
@@ -101,7 +101,7 @@ void filter::InitApplication(int argc, char ** argv)
 
 	// Checking for user input.
 	if (FilePresent(argc)) {
-		image_file = args[args.size - 1];
+		image_file = args[args.size() - 1];
 	}
 	else {
 

@@ -53,6 +53,8 @@ bool Image::load(const std::string & filename, const std::string & format) {
 		int w = width;
 		int h = height;
 
+		
+
 		float *data = ReadPPM(s0, &w, &h);
 
 		width = w;
@@ -116,7 +118,16 @@ bool Image::save(const std::string & filename, const std::string & format) {
 				p += 3;
 			}
 
-			if (WritePPM((float *)array, w, h, s0)) {
+			// Converts: Image01.ppm to Image01_neg.ppm
+			std::string leftPart = filename, newFileName;
+			newFileName = leftPart.substr(0, leftPart.find(".")) + "_filtered.ppm";
+
+			char* s2;
+			// Converts: std::string to char*
+			s2 = new char[newFileName.size() + 1];
+			memcpy(s2, newFileName.c_str(), newFileName.size() + 1);
+
+			if (WritePPM((float *)array, w, h, s2)) {
 				//std::cout << "Negative image created successfully" << std::endl;
 			}
 

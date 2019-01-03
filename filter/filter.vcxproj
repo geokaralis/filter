@@ -119,13 +119,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="app\filter.cpp" />
+    <ClCompile Include="app\application.cpp" />
     <ClCompile Include="base\command_line\command_line.cpp" />
     <ClCompile Include="app\filter_main.cpp" />
     <ClCompile Include="imaging\image.cpp" />
+    <ClCompile Include="ui\window.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="app\filter.h" />
+    <ClInclude Include="app\application.h" />
     <ClInclude Include="base\build.h" />
     <ClInclude Include="base\command_line\command_line.h" />
     <ClInclude Include="data\array.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="imaging\filter\filter_gamma.h" />
     <ClInclude Include="imaging\filter\filter_linear.h" />
     <ClInclude Include="imaging\image.h" />
+    <ClInclude Include="ui\window.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ppm\ppm.vcxproj">

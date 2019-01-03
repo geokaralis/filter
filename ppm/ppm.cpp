@@ -74,11 +74,11 @@ bool imaging::WritePPM(const float * data, int w, int h, const char * filename)
 	try
 	{
 		// Converts: Image01.ppm to Image01_neg.ppm
-		std::string leftPart = filename, newFileName;
-		newFileName = leftPart.substr(0, leftPart.find(".")) + "_neg.ppm";
+		/*std::string leftPart = filename, newFileName;
+		newFileName = leftPart.substr(0, leftPart.find(".")) + "_neg.ppm";*/
 
 		// Setting up the header of PPM file. 
-		std::ofstream file_stream(newFileName, std::ios_base::binary);
+		std::ofstream file_stream(filename, std::ios_base::binary);
 		file_stream << "P6\n";
 		file_stream << w << "\n";
 		file_stream << h << "\n";
