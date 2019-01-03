@@ -132,6 +132,7 @@
     <ClInclude Include="data\array.h" />
     <ClInclude Include="data\vec3.h" />
     <ClInclude Include="imaging\filter\filter.h" />
+    <ClInclude Include="imaging\filter\filter_blur.h" />
     <ClInclude Include="imaging\filter\filter_gamma.h" />
     <ClInclude Include="imaging\filter\filter_linear.h" />
     <ClInclude Include="imaging\image.h" />

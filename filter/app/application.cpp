@@ -3,6 +3,7 @@
 #include "../imaging/image.h"
 #include "../imaging/filter/filter_gamma.h"
 #include "../imaging/filter/filter_linear.h"
+#include "../imaging/filter/filter_blur.h"
 
 #include <sstream>
 #include <fstream>
@@ -57,7 +58,7 @@ std::vector<std::vector<std::string>> app::ParseFiltersFromArguments(std::vector
 		if (args[i] == "-f") {
 			int j = i + 1;
 
-			if (args[j] == "gamma") {
+			if (args[j] == "gamma" || args[j] == "blur") {
 				// args[j] == "gamma"
 				// args[j + 1] == value of gamma --> e.g. 2.0f
 				filter.insert(filter.end(), { args[j], args[j + 1] });
@@ -73,7 +74,7 @@ std::vector<std::vector<std::string>> app::ParseFiltersFromArguments(std::vector
 				filter.insert(filter.end(), { args[j], args[j + 1], args[j + 2], args[j + 3], args[j + 4], args[j + 5], args[j + 6] });
 				Allfilters.push_back(filter);
 				filter.clear();
-			} // !endif gamma || linear
+			} // !endif (gamma || blur || linear)
 		} // !endif -f
 	}
 	return Allfilters;
@@ -151,6 +152,12 @@ void app::Init(int argc, char ** argv)
 
 					FilterLinear *filter_linear = new FilterLinear(*a, *c);
 					*image = *filter_linear << *image;
+				}
+				else if (Allfilters[i][0] == "blur") {
+					unsigned int blur = std::stoi(Allfilters[i][1]);
+
+					FilterBlur *filter_blur = new FilterBlur(blur);
+					*image = *filter_blur << *image;
 				}
 			}
 

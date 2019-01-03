@@ -119,8 +119,8 @@ bool Image::save(const std::string & filename, const std::string & format) {
 			}
 
 			// Converts: Image01.ppm to Image01_neg.ppm
-			std::string leftPart = filename, newFileName;
-			newFileName = leftPart.substr(0, leftPart.find(".")) + "_filtered.ppm";
+			std::string newFileName;
+			newFileName = "filtered_" + filename;
 
 			char* s2;
 			// Converts: std::string to char*

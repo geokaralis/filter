@@ -2,7 +2,6 @@
 #define FILTER_GAMMA_H
 
 #include <cmath>
-#include <iostream>
 #include "filter.h"
 
 namespace imaging

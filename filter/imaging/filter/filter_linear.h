@@ -3,8 +3,6 @@
 
 #include "filter.h"
 
-#include <iostream>
-
 namespace imaging
 {
 	class FilterLinear : public Filter

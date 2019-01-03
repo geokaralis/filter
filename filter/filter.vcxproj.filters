@@ -62,5 +62,8 @@
     <ClInclude Include="ui\window.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="imaging\filter\filter_blur.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
