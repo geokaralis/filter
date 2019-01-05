@@ -135,6 +135,7 @@
     <ClInclude Include="imaging\filter\filter_blur.h" />
     <ClInclude Include="imaging\filter\filter_gamma.h" />
     <ClInclude Include="imaging\filter\filter_linear.h" />
+    <ClInclude Include="imaging\filter\filter_laplace.h" />
     <ClInclude Include="imaging\image.h" />
     <ClInclude Include="ui\window.h" />
   </ItemGroup>

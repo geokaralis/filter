@@ -4,6 +4,7 @@
 #include "../imaging/filter/filter_gamma.h"
 #include "../imaging/filter/filter_linear.h"
 #include "../imaging/filter/filter_blur.h"
+#include "../imaging/filter/filter_laplace.h"
 
 #include <sstream>
 #include <fstream>
@@ -60,7 +61,7 @@ std::vector<std::vector<std::string>> app::ParseFiltersFromArguments(std::vector
 
 			if (args[j] == "gamma" || args[j] == "blur") {
 				// args[j] == "gamma"
-				// args[j + 1] == value of gamma --> e.g. 2.0f
+				// args[j + 1] == value of gamma --> e.g. 2.0
 				filter.insert(filter.end(), { args[j], args[j + 1] });
 				Allfilters.push_back(filter);
 				filter.clear();
@@ -74,7 +75,13 @@ std::vector<std::vector<std::string>> app::ParseFiltersFromArguments(std::vector
 				filter.insert(filter.end(), { args[j], args[j + 1], args[j + 2], args[j + 3], args[j + 4], args[j + 5], args[j + 6] });
 				Allfilters.push_back(filter);
 				filter.clear();
-			} // !endif (gamma || blur || linear)
+			}
+			else if (args[j] == "laplace") {
+				// args[j] == "linear"				
+				filter.insert(filter.end(), { args[j] });
+				Allfilters.push_back(filter);
+				filter.clear();
+			}// !endif (gamma || blur || linear || laplace)
 		} // !endif -f
 	}
 	return Allfilters;
@@ -158,6 +165,10 @@ void app::Init(int argc, char ** argv)
 
 					FilterBlur *filter_blur = new FilterBlur(blur);
 					*image = *filter_blur << *image;
+				}
+				else if (Allfilters[i][0] == "laplace") {
+					FilterLaplace *filter_laplace = new FilterLaplace();
+					*image = *filter_laplace << *image;
 				}
 			}
 

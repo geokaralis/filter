@@ -1,5 +1,5 @@
-#ifndef _FILTERLINEAR
-#define _FILTERLINEAR
+#ifndef FILTER_LINEAR_H
+#define FILTER_LINEAR_H
 
 #include "filter.h"
 
@@ -11,7 +11,7 @@ namespace imaging
 		Color a;
 		Color c;
 	public:
-		Image operator << (const Image & image)
+		Image operator<< (const Image & image)
 		{
 			Image img = image;
 
@@ -40,4 +40,4 @@ namespace imaging
 
 } //namespace imaging
 
-#endif
+#endif // !FILTER_LINEAR_H

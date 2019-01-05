@@ -15,4 +15,3 @@ void Init(int argc, char** argv);
 } // namespace app
 
 #endif // !APPLICATION_H
-
