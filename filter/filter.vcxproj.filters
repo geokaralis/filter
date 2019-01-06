@@ -30,6 +30,18 @@
     <ClCompile Include="ui\window.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="imaging\filter\filter_blur.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imaging\filter\filter_laplace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imaging\filter\filter_linear.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="imaging\filter\filter_gamma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\build.h">

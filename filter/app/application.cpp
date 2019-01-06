@@ -12,95 +12,17 @@
 
 using namespace imaging;
 
-bool app::ArgumentsExist(int argc)
-{
-	if (argc > 2) {
-		return true;
-	}
-
-	return false;
-}
-
-bool app::FilePresent(int argc)
-{
-	if (argc < 2) {
-		return false;
-	}
-	return true;
-}
-
-void app::LoadFile(std::string& input)
-{
-	std::cout << "File name of the image to load: ";
-	std::cin >> input;
-}
-
-
-// Removes all filters from args.
-// Adds these filters to Allfilters.
-std::vector<std::vector<std::string>> app::ParseFiltersFromArguments(std::vector<std::string> &args) {
-	std::vector<std::string> filter;                        // contains a filter and its values            --> e.g. {"gamma", "2.0"}
-	std::vector<std::vector<std::string>> Allfilters;        // contains all filters and their values.    --> e.g. {{"gamma", "2.0"}, ... }
-
-
-	//while (args = parse("-f", args)) // -f gamma 2.0 -
-	//{
-		// insert
-	//}
-
-	// [gamma, 2.0][linear, 1, 1, ...]
-	
-	/*std::vector<Node> filters;
-	Node n = new Node("gamma", args)*/
-	
-
-	// Range-based for loop with argv.
-	for (int i = 0; i < args.size(); i++) {
-		if (args[i] == "-f") {
-			int j = i + 1;
-
-			if (args[j] == "gamma" || args[j] == "blur") {
-				// args[j] == "gamma"
-				// args[j + 1] == value of gamma --> e.g. 2.0
-				filter.insert(filter.end(), { args[j], args[j + 1] });
-				Allfilters.push_back(filter);
-				filter.clear();
-			}
-			else if (args[j] == "linear") {
-				// args[j] == "linear"
-				// args[j + 1] == value of aR --> e.g. -1
-				// args[j + 2] == value of aG --> e.g. -1
-				// ...
-				// args[j + 6] == value of cB --> e.g. 1
-				filter.insert(filter.end(), { args[j], args[j + 1], args[j + 2], args[j + 3], args[j + 4], args[j + 5], args[j + 6] });
-				Allfilters.push_back(filter);
-				filter.clear();
-			}
-			else if (args[j] == "laplace") {
-				// args[j] == "linear"				
-				filter.insert(filter.end(), { args[j] });
-				Allfilters.push_back(filter);
-				filter.clear();
-			}// !endif (gamma || blur || linear || laplace)
-		} // !endif -f
-	}
-	return Allfilters;
-}
-
 void app::Init(int argc, char ** argv)
 {
 	base::CommandLine::Init(argc, argv);
 
 	std::string image_file;
-
 	std::string input_filter_args;
 
 	// Store argv in a vector of strings (args). 
 	// NOTE: System cant tell how long argv is at compile time
 	std::vector<std::string> args(argv, argv + argc);
-
 	std::vector<std::string> input_args;
-
 	std::vector<std::vector<std::string>> Allfilters;
 
 	if (ArgumentsExist(argc)) {
@@ -114,7 +36,6 @@ void app::Init(int argc, char ** argv)
 	else {
 
 		std::cout << "Specify filter(s): "; // -f gamma 2.0 -f linear 1 1 1
-
 		std::getline(std::cin, input_filter_args);
 
 		std::istringstream iss(input_filter_args);
@@ -171,8 +92,6 @@ void app::Init(int argc, char ** argv)
 					*image = *filter_laplace << *image;
 				}
 			}
-
-
 		}
 		else {
 			std::cout << "File isn't recognized as a valid ppm image." << std::endl;
@@ -191,3 +110,66 @@ void app::Init(int argc, char ** argv)
 		base::CommandLine::Terminate();
 	}
 }
+
+std::vector<std::vector<std::string>> app::ParseFiltersFromArguments(std::vector<std::string> &args) {
+	std::vector<std::string> filter;                   // contains a filter and its values          --> e.g. {"gamma", "2.0"}
+	std::vector<std::vector<std::string>> Allfilters;  // contains all filters and their values.    --> e.g. {{"gamma", "2.0"}, ... }
+
+	// Range-based for loop with argv.
+	for (int i = 0; i < args.size(); i++) {
+		if (args[i] == "-f") {
+			int j = i + 1;
+
+			if (args[j] == "gamma" || args[j] == "blur") {
+				// args[j] == "gamma"
+				// args[j + 1] == value of gamma --> e.g. 2.0
+				filter.insert(filter.end(), { args[j], args[j + 1] });
+				Allfilters.push_back(filter);
+				filter.clear();
+			}
+			else if (args[j] == "linear") {
+				// args[j] == "linear"
+				// args[j + 1] == value of aR --> e.g. -1
+				// args[j + 2] == value of aG --> e.g. -1
+				// ...
+				// args[j + 6] == value of cB --> e.g. 1
+				filter.insert(filter.end(), { args[j], args[j + 1], args[j + 2], args[j + 3], args[j + 4], args[j + 5], args[j + 6] });
+				Allfilters.push_back(filter);
+				filter.clear();
+			}
+			else if (args[j] == "laplace") {
+				// args[j] == "linear"				
+				filter.insert(filter.end(), { args[j] });
+				Allfilters.push_back(filter);
+				filter.clear();
+			}// !endif (gamma || blur || linear || laplace)
+		} // !endif -f
+	}
+	return Allfilters;
+}
+
+bool app::ArgumentsExist(int argc)
+{
+	if (argc > 2) {
+		return true;
+	}
+
+	return false;
+}
+
+bool app::FilePresent(int argc)
+{
+	if (argc < 2) {
+		return false;
+	}
+
+	return true;
+}
+
+void app::LoadFile(std::string& input)
+{
+	std::cout << "File name of the image to load: ";
+	std::cin >> input;
+}
+
+
